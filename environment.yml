@@ -1,0 +1,21 @@
+name: llm_generated_dataset
+
+channels:
+  - pytorch
+  - conda-forge
+  - anaconda
+  - defaults
+  - nvidia
+  
+dependencies:
+  - python=3.9
+  - pip:
+    - numpy==1.23.4
+    - torch==2.5.1
+    - torchvision==0.20.1
+    - transformers==4.46.2
+    - pandas==2.2.3
+    - librosa==0.10.2.post1
+    - accelerate==0.26.0
+    - bitsandbytes==0.45.2
+prefix: /root/miniconda3/envs/face_env_conda
