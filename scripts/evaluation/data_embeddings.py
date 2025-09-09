@@ -1,75 +1,8 @@
-'''import pandas as pd
-import torch
-import ast
-import numpy as np
-from model_claude import BlendshapeEncoder
-from sklearn.manifold import TSNE
-import matplotlib.pyplot as plt
-
-class EmbeddingGenerator:
-    def __init__(self, df, encoder, device="cuda:1"):
-        self.device = device
-        self.encoder = encoder.to(self.device)
-        self.df = df.copy()
-        self.df["bs_embeddings"] = None
-
-    def get_embeddings(self):
-        embeddings_list = []
-
-        with torch.no_grad():
-            for idx, row in self.df.iterrows():
-                if isinstance(row["blendshapes"], str):
-                    blendshapes = torch.tensor(ast.literal_eval(row["blendshapes"]), dtype=torch.float32)
-                else:
-                    blendshapes = torch.tensor(row["blendshapes"], dtype=torch.float32)
-
-                blendshapes = blendshapes[1:]
-
-                blendshapes = blendshapes.to(self.device)
-
-                embedding = self.encoder(blendshapes.unsqueeze(0))
-                embedding_np = embedding.detach().cpu().numpy().flatten()
-                embeddings_list.append(embedding_np)
-
-                print(f'Number of samples processed: {len(embeddings_list)}')
-
-        return np.array(embeddings_list)  # Return as a 2D array
-
-    def apply_tsne(self, embeddings, perplexity=30, learning_rate=200, random_state=42):
-        tsne = TSNE(n_components=2, perplexity=perplexity, 
-                    learning_rate=learning_rate, random_state=random_state)
-        return tsne.fit_transform(embeddings)
-    
-    def plot_tsne(self, tsne_results, figsize=(12, 8), save_path='dataset/tsne_plot_10000'):
-        plt.figure(figsize=figsize)
-        plt.scatter(tsne_results[:, 0], tsne_results[:, 1], alpha=0.6)
-        plt.xlabel('t-SNE Component 1')
-        plt.ylabel('t-SNE Component 2')
-        plt.title('Blendshape Embeddings t-SNE Visualization')
-        plt.tight_layout()
-        plt.savefig(save_path, dpi=300, bbox_inches='tight')
-        print(f"Plot saved to {save_path}")
-        plt.show()
-
-# Example Usage
-encoder = BlendshapeEncoder()
-df = pd.read_csv('dataset/bs_llm_llama32_3b_all.csv')
-
-embed_generator = EmbeddingGenerator(df.sample(n=10000, random_state=42), encoder=encoder)
-embeddings = embed_generator.get_embeddings()
-
-# Apply t-SNE
-tsne = embed_generator.apply_tsne(embeddings)
-
-# Plot and save the t-SNE results
-embed_generator.plot_tsne(tsne)'''
-
-
 import pandas as pd
 import torch
 import ast
 import numpy as np
-from model_clip import BlendshapeEncoder, TextProjector, ClipEncoderModule
+from .model import BlendshapeEncoder, TextProjector, ClipEncoderModule
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
@@ -96,37 +29,12 @@ class EmbeddingGenerator:
         self.df["d_embeddings"] = None
         self.df["au_embeddings"] = None
         self.df["bs_embeddings"] = None
-
-    '''def _load_model(self, model_path):
-        """
-        Load the trained model weights and prepare the encoder.
-        
-        Args:
-            model_path: Path to the saved model weights
-            
-        Returns:
-            Loaded and prepared encoder model
-        """
-        try:
-            bs_encoder = BlendshapeEncoder()
-            text_proj = TextProjector()
-            #clip_encoder = ClipEncoderModule()
-
-            encoder.load_state_dict(torch.load(model_path, map_location=self.device))
-            encoder.eval()  # Set to evaluation mode
-            encoder = encoder.to(self.device)
-            print(f"Successfully loaded model from {model_path}")
-            return encoder
-        except FileNotFoundError:
-            raise FileNotFoundError(f"Model file not found at {model_path}")
-        except Exception as e:
-            raise Exception(f"Error loading model: {str(e)}")'''
         
     def LoadModel(self, model_weights, model_class):
         self.model = model_class() 
         self.model.load_state_dict(torch.load(model_weights))
         self.model.to(self.device)
-        #self.logger.info(f"Loaded model weights from {model_weights}")
+        self.logger.info(f"Loaded model weights from {model_weights}")
 
     def get_embeddings(self):
         bs_embbeding_list = []

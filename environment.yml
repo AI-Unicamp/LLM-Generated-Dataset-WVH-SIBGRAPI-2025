@@ -18,4 +18,6 @@ dependencies:
     - librosa==0.10.2.post1
     - accelerate==0.26.0
     - bitsandbytes==0.45.2
+    - matplotlib==3.9.4
+    - nltk==3.9.1
 prefix: /root/miniconda3/envs/face_env_conda
