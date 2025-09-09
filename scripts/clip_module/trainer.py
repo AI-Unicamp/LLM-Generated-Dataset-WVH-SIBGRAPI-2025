@@ -159,6 +159,7 @@ class Trainer:
                     
 
             avg_val_loss = val_loss / len(self.val_loader)
+            print(f'Avg. Eval Loss: {avg_val_loss:.3f}')
 
 
         # Save models

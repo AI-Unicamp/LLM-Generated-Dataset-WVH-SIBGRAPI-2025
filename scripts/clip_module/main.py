@@ -5,7 +5,7 @@ from model import BlendshapeEncoder, BlendshapeDecoder, ClipEncoderModule, TextP
 
 # Load your dataframe containing the blendshapes data
 dataframe = pd.read_csv('../../gen_data/dataset_with_BS.csv')
-dataframe_test = dataframe[:5]
+dataframe_toy = dataframe[:5]
 
 # Create the dataset
 dataset = BlendshapeDataset(dataframe)
@@ -24,6 +24,6 @@ trainer = Trainer(encoder=encoder,
                   dataset=dataset, 
                   batch_size=256, 
                   learning_rate=1e-5, 
-                  epochs=100, 
+                  epochs=100,
                   device='cuda:0')
 trainer.train()
