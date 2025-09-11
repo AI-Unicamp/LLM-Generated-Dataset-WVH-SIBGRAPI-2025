@@ -145,12 +145,7 @@ python tsne_plot.py
 If you use this code or dataset in your research, please cite:
 
 ```bibtex
-@inproceedings{llm_facial_animation_2025,
-  title={LLM-Generated Dataset for Speech-Driven 3D Facial Animation Models with Text-Controlled Expressivity},
-  author={Your Name and Collaborators},
-  booktitle={SIBGRAPI 2025},
-  year={2025}
-}
+TBD
 ```
 
 
