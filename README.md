@@ -38,8 +38,8 @@ This project focuses on creating high-quality synthetic datasets for training sp
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/AI-Unicamp/LLM-Generated-Dataset-WVH-SIBGRAPI-2025.git
-cd LLM-Generated-Dataset-WVH-SIBGRAPI-2025
+git clone https://github.com/AI-Unicamp/LLM-Generated-Dataset.git
+cd LLM-Generated-Dataset
 ```
 
 2. **Install Git LFS (required for model weights):**
