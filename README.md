@@ -59,14 +59,6 @@ conda activate llm_generated_dataset
 pip install -r requirements.txt
 ```
 
-### Quick Execution
-
-Run the complete pipeline:
-```bash
-chmod +x passo_a_passo.sh
-./passo_a_passo.sh
-```
-
 ## 📊 Datasets
 
 ### Input Datasets (raw_data/)
