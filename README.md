@@ -13,8 +13,7 @@ This repository contains the implementation and datasets for generating syntheti
 │   ├── dataset_generation/  # LLM-based data generation
 │   └── evaluation/      # Model evaluation and visualization
 ├── environment.yml      # Conda environment configuration
-├── requirements.txt     # Python dependencies
-└── passo_a_passo.sh    # Setup and execution script
+└── requirements.txt     # Python dependencies
 ```
 
 ## 🎯 Project Overview
