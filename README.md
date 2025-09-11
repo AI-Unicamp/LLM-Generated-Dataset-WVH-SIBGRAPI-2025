@@ -140,67 +140,6 @@ cd scripts/evaluation/
 python tsne_plot.py
 ```
 
-## 📈 Features
-
-### Text Augmentation
-- **Synonym replacement** using WordNet
-- **Random word swapping** and deletion
-- **Contextual perturbations** for robustness
-
-### Blendshape Processing
-- **51D facial blendshape vectors** (excluding head pose)
-- **Noise injection** for data augmentation
-- **FACS-based action unit mapping**
-
-### Multimodal Training
-- **Reconstruction loss**: MSE between original and reconstructed blendshapes
-- **Alignment loss**: Cosine similarity between text and blendshape embeddings
-- **Cross-modal loss**: Text-to-blendshape generation quality
-
-## 🎨 Visualization
-
-The evaluation module provides:
-- **t-SNE embeddings** of text and blendshape representations
-- **Arrow path visualization** showing semantic interpolation
-- **Multi-modal embedding comparison**
-
-Example output:
-```python
-# Generate t-SNE visualization
-embeddings_dict = generator.get_embeddings()
-tsne_results = generator.apply_tsne_to_all(embeddings_dict)
-generator.plot_tsne_comparison(tsne_results)
-```
-
-## 📋 Configuration
-
-### Model Hyperparameters
-- **Latent dimension**: 512
-- **Batch size**: 256
-- **Learning rate**: 1e-5
-- **Training epochs**: 100-200
-- **Loss weights**: Reconstruction (1.0), Alignment (10.0), Cross-modal (10.0)
-
-### Text Augmentation Settings
-- **Synonym probability**: 0.1
-- **Swap probability**: 0.1
-- **Augmentations per sample**: 4
-
-## 🤖 Pre-trained Models
-
-Pre-trained model weights are available via Git LFS:
-- `bs_encoder_weights_200ep_augmented.pth` (103MB)
-- `txt_proj_weights_200ep_augmented.pth` (4MB)
-- `bs_decoder_weights_200ep_augmented.pth` (103MB)
-
-## 🔬 Research Applications
-
-This work enables:
-- **Controllable facial animation** from text descriptions
-- **Emotion-aware speech synthesis** 
-- **Cross-modal facial expression transfer**
-- **Synthetic training data generation** for animation models
-
 ## 📄 Citation
 
 If you use this code or dataset in your research, please cite:
@@ -214,32 +153,10 @@ If you use this code or dataset in your research, please cite:
 }
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **AIMS-Unicamp** for research support
-- **Meta AI** for Llama 3.3 model access
-- **OpenAI** for CLIP model architecture
-- **Emotion dataset creators**: GoEmotions, Tweet Intensity, ISEAR teams
 
 ## 📞 Contact
 
 For questions or collaboration opportunities, please reach out through:
 - GitHub Issues
-- Email: [Your Email]
+- Email: p243236@dac.unicamp.br
 - Institution: AIMS-Unicamp
-
----
-
-**Note**: This project requires significant computational resources for LLM inference and model training. Consider using cloud computing services for large-scale experiments.
